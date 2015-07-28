@@ -15,3 +15,5 @@ dist
 .idea
 *.iml
 .ensime*
+.DS_STORE
+
