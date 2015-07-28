@@ -1,0 +1,15 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+# General API
+GET    /activities/:activity    controllers.Application.listActivities(activity: String)
+
+#plus passed cookie rl-session
+GET    /documents               controllers.Application.listDocuments(client_app_uuid: String, access_token: String, user_email: String, esign_document_reference_uuid: Option[String], documentTypeName: Option[String])
+
+#plus passed cookie rl-session
+GET    /dashboards              controllers.Application.listDashboards
+
+#plus passed cookie rl-session
+GET    /legal/:questionId       controllers.Application.listLegal(questionId: String, assignee: String)

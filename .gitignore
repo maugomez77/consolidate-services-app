@@ -1,0 +1,17 @@
+logs
+project/project
+project/target
+target
+tmp
+dist
+.cache
+*~
+.project
+.classpath
+.settings
+.sonar
+.cache
+.springBeans
+.idea
+*.iml
+.ensime*

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration scan="true" scanPeriod="60 seconds">
+    <contextName>consolidate-service</contextName>
+    <property name="log.directory" value="${catalina.base:-/var/log/rlservices}/logs/" />
+    <property name="log.filename" value="${CONTEXT_NAME}.log" />
+
+    <include optional="true" file="/opt/resources/logback/shared-logback.xml" />
+    <include optional="true" file="/opt/resources/logback/${CONTEXT_NAME}-logback.xml" />
+
+    <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${log.directory}/${log.filename}</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${log.directory}/${log.filename}.%d{yyyy-MM-dd}</fileNamePattern>
+            <maxHistory>${log.maxhistory:-30}</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%d [%thread] %-5level %logger [%file:%line] - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <root level="${root.level:-DEBUG}">
+        <appender-ref ref="SYSLOG"/>
+        <appender-ref ref="FILE"/>
+    </root>
+</configuration>
